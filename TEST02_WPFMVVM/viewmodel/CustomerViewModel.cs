@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TEST02_WPFMVVM.Commands;
 using TEST02_WPFMVVM.interfaces;
 using TEST02_WPFMVVM.model;
 using TEST02_WPFMVVM.services;
@@ -18,10 +20,7 @@ namespace TEST02_WPFMVVM.viewmodel
         {
             this._CustomersService = _CustomersService;
 
-            _Customer = new CustomerModel("Witek");
-           
-
-            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            //_Customer = new CustomerModel("Witek");                     
             Load();
 
         }
@@ -36,31 +35,66 @@ namespace TEST02_WPFMVVM.viewmodel
 
         private void Load()
         {
-            Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            this.TextValue = "abc";
         }
 
-        private ICollection<CustomerModel> _Customers;
+        private string _TextValue;
 
-        public ICollection<CustomerModel> Customers
+        public string TextValue
         {
-            get { return _Customers; }
+            get
+            {                
+                return _TextValue;
+            }
             set
             {
-                _Customers = value;
+                _TextValue = value;
                 OnPropertyChanged();
             }
         }
 
-        private CustomerModel _Customer;
 
-        public CustomerModel Customer
+        public ICommand AddTextCommand
         {
-            get { return _Customer; }
-            set
+            get
             {
-                _Customer = value;
-                OnPropertyChanged();
-            }
+                return new RelayCommand(c => AddText(), c => CanAddText());
+            }            
         }
+
+        private bool CanAddText()
+        {
+            return true;
+        }
+
+        private void AddText()
+        {
+            this.TextValue = "zmiana";
+        }
+
+        //private ICollection<CustomerModel> _Customers;
+
+        //public ICollection<CustomerModel> Customers
+        //{
+        //    get { return _Customers; }
+        //    set
+        //    {
+        //        _Customers = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //private CustomerModel _Customer;
+
+        //public CustomerModel Customer
+        //{
+        //    get { return _Customer; }
+        //    set
+        //    {
+        //        _Customer = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
     }
-    }
+ }

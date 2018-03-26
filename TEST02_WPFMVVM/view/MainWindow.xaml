@@ -12,8 +12,12 @@
     </Window.DataContext>
     <Grid>
         <StackPanel>
-            <TextBox Text="qwerty" />
-            <Button Content="AddText" />
+            <TextBox x:Name="textFiled01" Text="{Binding TextValue}"  >
+                <TextBox.BindingGroup>
+                    <BindingGroup/>
+                </TextBox.BindingGroup>
+            </TextBox>
+            <Button Content="AddText" Command="{Binding AddTextCommand}" />
         </StackPanel>
     </Grid>
 </Window>
