@@ -14,22 +14,22 @@ namespace TEST02_WPFMVVM.viewmodel
 {
     public class CustomerViewModel : BaseViewModel
     {
-        private readonly ICustomersService _CustomersService;
+       // private readonly ICustomersService _CustomersService;
 
-        public CustomerViewModel(ICustomersService _CustomersService)
-        {
-            this._CustomersService = _CustomersService;
+        //public CustomerViewModel(ICustomersService _CustomersService)
+        //{
+        //    this._CustomersService = _CustomersService;
 
-            //_Customer = new CustomerModel("Witek");                     
-            Load();
+        //    //_Customer = new CustomerModel("Witek");                     
+        //    Load();
 
-        }
+        //}
 
         public CustomerViewModel()
-            : this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
+            //: this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
                                                //: this(new DbProductService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
         {
-
+            Load();
         }
 
 
