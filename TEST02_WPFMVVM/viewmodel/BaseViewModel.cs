@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace TEST02_WPFMVVM.viewmodel
 {
 
-   public abstract class BaseViewModel
+   public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
