@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Input;
 using TEST02_WPFMVVM.Commands;
 using TEST02_WPFMVVM.interfaces;
@@ -14,29 +15,30 @@ namespace TEST02_WPFMVVM.viewmodel
 {
     public class CustomerViewModel : BaseViewModel
     {
-       // private readonly ICustomersService _CustomersService;
+        private readonly ICustomersService _CustomersService;
 
-        //public CustomerViewModel(ICustomersService _CustomersService)
-        //{
-        //    this._CustomersService = _CustomersService;
+        public CustomerViewModel(ICustomersService _CustomersService)
+        {
+            this._CustomersService = _CustomersService;
 
-        //    //_Customer = new CustomerModel("Witek");                     
-        //    Load();
+            //_Customer = new CustomerModel("Witek");                     
+            Load();
 
-        //}
+        }
 
         public CustomerViewModel()
-            //: this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
+            : this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
                                                //: this(new DbProductService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
         {
-            Load();
+           
         }
 
 
         private void Load()
         {
-            //Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
+            Customers = new ObservableCollection<CustomerModel>(_CustomersService.Get());  //implementacja klasy informującej listę o konieczności zmiany
             this.TextValue = "abc";
+            
         }
 
         private string _TextValue;
@@ -66,35 +68,67 @@ namespace TEST02_WPFMVVM.viewmodel
         private bool CanAddText()
         {
             return true;
+           
+
         }
 
         private void AddText()
         {
-            this.TextValue = "zmiana";
+            //this.TextValue = "zmiana";
+            this.TextValue = this.SelectedCustomer.Name ;
         }
 
-        //private ICollection<CustomerModel> _Customers;
+        private ICollection<CustomerModel> _Customers;
 
-        //public ICollection<CustomerModel> Customers
-        //{
-        //    get { return _Customers; }
-        //    set
-        //    {
-        //        _Customers = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public ICollection<CustomerModel> Customers
+        {
+            get { return _Customers; }
+            set
+            {
+                _Customers = value;
+                OnPropertyChanged();
+            }
+        }
 
-        //private CustomerModel _Customer;
+        private CustomerModel _Customer;
 
-        //public CustomerModel Customer
-        //{
-        //    get { return _Customer; }
-        //    set
-        //    {
-        //        _Customer = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public CustomerModel Customer
+        {
+            get { return _Customer; }
+            set
+            {
+                _Customer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private CustomerModel _SelectedCustomer;
+
+        public CustomerModel SelectedCustomer
+        {
+            get { return _SelectedCustomer; }
+            set
+            {
+                _SelectedCustomer = value;
+                OnPropertyChanged();
+            }
+        }
+       
+
+        private bool _IsSelectedCustomer;
+
+        public bool IsSelectedCustomer
+        {
+            get { return _IsSelectedCustomer; }
+            set
+            {
+                _IsSelectedCustomer = value;                                
+                OnPropertyChanged();
+            }
+        }
+
+       // private bool IsSelectedCustomer => SelectedCustomer != null;
+
+
     }
  }

@@ -18,6 +18,7 @@ namespace TEST02_WPFMVVM.services
             {
                 new CustomerModel {Id=1, Name = "Name01" },
                 new CustomerModel {Id=2, Name = "Name02" },
+                new CustomerModel {Id=3, Name = "Name03" },
             };
         }
 

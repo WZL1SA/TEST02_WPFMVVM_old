@@ -11,13 +11,27 @@
         <vm:CustomerViewModel />
     </Window.DataContext>
     <Grid>
-        <StackPanel>
-            <TextBox x:Name="textFiled01" Text="{Binding TextValue}"  >
-                <TextBox.BindingGroup>
-                    <BindingGroup/>
-                </TextBox.BindingGroup>
-            </TextBox>
-            <Button Content="AddText" Command="{Binding AddTextCommand}" />
-        </StackPanel>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBox x:Name="textFiled01" Text="{Binding TextValue}" Width="250"  >
+                    <TextBox.BindingGroup>
+                        <BindingGroup/>
+                    </TextBox.BindingGroup>
+                </TextBox>
+                <Button Content="AddText" Command="{Binding AddTextCommand}" />
+            </StackPanel>
+            
+            <DataGrid 
+                ItemsSource="{Binding Customers}" 
+                  SelectedItem="{Binding SelectedCustomer}"
+                      AutoGenerateColumns="False"                      
+                  >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}"  />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        
     </Grid>
 </Window>
