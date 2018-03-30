@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TEST02_WPFMVVM"
         xmlns:vm="clr-namespace:TEST02_WPFMVVM.viewmodel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -18,15 +19,22 @@
                         <BindingGroup/>
                     </TextBox.BindingGroup>
                 </TextBox>
-                <Button Content="AddText" Command="{Binding AddTextCommand}" />
+                <Button Content="AddText" Command="{Binding AddTextCommand}" IsEnabled="{Binding ButtonEnabled}"/>
+                
             </StackPanel>
             
             <DataGrid 
                 ItemsSource="{Binding Customers}" 
-                  SelectedItem="{Binding SelectedCustomer}"
-                      AutoGenerateColumns="False"                      
+                  SelectedItem="{Binding SelectedCustomer}" 
+                      AutoGenerateColumns="False"                        
                   >
-
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectCommand}"
+                                               />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Name}"  />
                 </DataGrid.Columns>

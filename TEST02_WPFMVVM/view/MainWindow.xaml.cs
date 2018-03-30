@@ -24,5 +24,6 @@ namespace TEST02_WPFMVVM
         {
             InitializeComponent();
         }
+
     }
 }

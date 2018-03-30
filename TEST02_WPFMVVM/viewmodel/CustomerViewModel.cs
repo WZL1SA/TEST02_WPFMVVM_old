@@ -62,20 +62,24 @@ namespace TEST02_WPFMVVM.viewmodel
             get
             {
                 return new RelayCommand(c => AddText(), c => CanAddText());
-            }            
+            }
         }
+
+        //public ICommand AddTextCommand => new RelayCommand(c => AddText(), c => CanAddText);
+
+        // public ICommand StartCommand => new RelayCommand(() => Start(), () => CanStart);
+
+
 
         private bool CanAddText()
         {
             return true;
-           
-
         }
 
         private void AddText()
         {
             //this.TextValue = "zmiana";
-            this.TextValue = this.SelectedCustomer.Name ;
+            this.TextValue = this.SelectedCustomer.Name;
         }
 
         private ICollection<CustomerModel> _Customers;
@@ -109,7 +113,7 @@ namespace TEST02_WPFMVVM.viewmodel
             get { return _SelectedCustomer; }
             set
             {
-                _SelectedCustomer = value;
+                _SelectedCustomer = value;                
                 OnPropertyChanged();
             }
         }
@@ -123,11 +127,61 @@ namespace TEST02_WPFMVVM.viewmodel
             set
             {
                 _IsSelectedCustomer = value;                                
+                OnPropertyChanged();                
+            }
+        }
+
+        private bool _ButtonEnabled;
+
+        public bool ButtonEnabled
+        {
+            get
+            {
+                //if(this.IsSelectedCustomer == false)
+                //{
+                //    _ButtonEnabled = false;
+                //}
+                //else
+                //{
+                //    _ButtonEnabled = true;
+                //}
+                
+                return _ButtonEnabled;
+            }
+            set
+            {                
+                 _ButtonEnabled = value;
                 OnPropertyChanged();
             }
         }
 
-       // private bool IsSelectedCustomer => SelectedCustomer != null;
+
+        // private bool IsSelectedCustomer => SelectedCustomer != null;
+
+        private ICommand _SelectCommand;
+        public ICommand SelectCommand
+        {
+            get
+            {
+                if (_SelectCommand == null)
+                {
+                    _SelectCommand = new RelayCommand(p => Select());
+                }
+
+                return _SelectCommand;
+            }
+        }
+
+
+        private void Select()
+        {
+            this.ButtonEnabled = true;
+        }
+
+
+
+
+
 
 
     }
