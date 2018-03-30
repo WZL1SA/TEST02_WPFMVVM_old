@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombardier.WPF.ViewModels",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombardier.WPF.WPFDemo", "..\Vavatech.Bombardier.WPFMVVM\Bombardier.WPF.WPFDemo\Bombardier.WPF.WPFDemo.csproj", "{6CB717D5-36A8-4A4D-BC52-2B038320A7E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sulmar", "Sulmar", "{0C0E7EC9-ECD7-4404-AFDD-A60FADFB11D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
