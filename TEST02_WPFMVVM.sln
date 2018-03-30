@@ -27,6 +27,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WindowsApp1", "..\WindowsAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsystentZakupówWPF", "..\WZL.CSharp\AsystentZakupówWPF\AsystentZakupówWPF.csproj", "{49B3E2AA-2C9E-478A-90C7-B1B1FFE75AAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFMVVMButtons", "..\WPFMVVMButtons\WPFMVVMButtons\WPFMVVMButtons.csproj", "{A74E55E6-CEA4-481C-898F-0E138DDF6035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{49B3E2AA-2C9E-478A-90C7-B1B1FFE75AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49B3E2AA-2C9E-478A-90C7-B1B1FFE75AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49B3E2AA-2C9E-478A-90C7-B1B1FFE75AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74E55E6-CEA4-481C-898F-0E138DDF6035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74E55E6-CEA4-481C-898F-0E138DDF6035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74E55E6-CEA4-481C-898F-0E138DDF6035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74E55E6-CEA4-481C-898F-0E138DDF6035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{53AADE31-EBA6-43B8-8502-D1EDB2684A90} = {795A5B59-9439-405E-8C48-98C2005EA28A}
 		{FDCE87BC-17C7-4DAE-827C-1484AA043E84} = {795A5B59-9439-405E-8C48-98C2005EA28A}
 		{49B3E2AA-2C9E-478A-90C7-B1B1FFE75AAD} = {795A5B59-9439-405E-8C48-98C2005EA28A}
+		{A74E55E6-CEA4-481C-898F-0E138DDF6035} = {795A5B59-9439-405E-8C48-98C2005EA28A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BD89CA3-1BDE-406E-A186-5EC4C6986F5A}
