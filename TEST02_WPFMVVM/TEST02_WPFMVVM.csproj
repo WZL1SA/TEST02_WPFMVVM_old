@@ -46,6 +46,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -71,6 +73,25 @@
     <Compile Include="interfaces\ICustomersService.cs" />
     <Compile Include="model\BaseModel.cs" />
     <Compile Include="model\CustomerModel.cs" />
+    <Compile Include="model\Customers.cs">
+      <DependentUpon>CustomersModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\CustomersModelContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomersModelContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\CustomersModelContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomersModelContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="model\CustomersModelContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomersModelContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="services\DbCustomerService.cs" />
     <Compile Include="services\MocCustomersServices.cs" />
     <Compile Include="viewmodel\BaseViewModel.cs" />
     <Compile Include="viewmodel\CustomerViewModel.cs" />
@@ -105,6 +126,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="model\CustomersModelContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomersModelContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="model\CustomersModelContext.edmx.diagram">
+      <DependentUpon>CustomersModelContext.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,6 +142,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="model\CustomersModelContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomersModelContext.edmx</DependentUpon>
+      <LastGenOutput>CustomersModelContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="model\CustomersModelContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomersModelContext.edmx</DependentUpon>
+      <LastGenOutput>CustomersModelContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

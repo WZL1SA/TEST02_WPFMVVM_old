@@ -18,8 +18,16 @@
                     <TextBox.BindingGroup>
                         <BindingGroup/>
                     </TextBox.BindingGroup>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectCommand}"
+                                               />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </TextBox>
-                <Button Content="AddText" Command="{Binding AddTextCommand}" IsEnabled="{Binding ButtonEnabled}"/>
+                <Button Content="AddCustomer" Command="{Binding AddCustomerCommand}" IsEnabled="{Binding ButtonEnabled}"/>
+                <Button Content="UpdateCustomer" Command="{Binding UpdateCustomerCommand}" />
+                <Button Content="DeleteCustomer" Command="{Binding DeleteCustomerCommand}" />
                 
             </StackPanel>
             
@@ -30,7 +38,7 @@
                   >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding SelectCommand}"
+                        <i:InvokeCommandAction Command="{Binding SelectRowCommand}"
                                                />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

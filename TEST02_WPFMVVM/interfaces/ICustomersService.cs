@@ -12,7 +12,7 @@ namespace TEST02_WPFMVVM.interfaces
         
             void Add(CustomerModel customer);
 
-            void Update(CustomerModel customer);
+            void Update(CustomerModel customer, string name);
 
             void Remove(int id);
 
