@@ -28,7 +28,7 @@ namespace TEST02_WPFMVVM.viewmodel
 
         public CustomerViewModel()
             : this(new MocCustomersServices()) // gdy kożystamy z Moc używamy metod Moc
-                                               //: this(new DbProductService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
+           //: this(new DbCustomerService()) // gdy kożystamy z bazy danych kożystamy z metod klasy DbProductService
         {
            
         }
@@ -57,29 +57,68 @@ namespace TEST02_WPFMVVM.viewmodel
         }
 
 
-        public ICommand AddTextCommand
+
+
+
+        public ICommand AddCustomerCommand
         {
             get
             {
-                return new RelayCommand(c => AddText(), c => CanAddText());
+                return new RelayCommand(c => AddCustomer(), c => CanAddCustomer());
             }
         }
 
-        //public ICommand AddTextCommand => new RelayCommand(c => AddText(), c => CanAddText);
+        //public ICommand AddCustomerCommand => new RelayCommand(c => AddCustomer(), c => CanAddCustomer);
 
         // public ICommand StartCommand => new RelayCommand(() => Start(), () => CanStart);
 
 
 
-        private bool CanAddText()
+        private bool CanAddCustomer()
         {
             return true;
         }
 
-        private void AddText()
+        private void AddCustomer()
         {
             //this.TextValue = "zmiana";
-            this.TextValue = this.SelectedCustomer.Name;
+            //this.TextValue = this.SelectedCustomer.Name;
+            var customer = new CustomerModel(this.TextValue);
+            _CustomersService.Add(customer);
+            this.Customers.Add(customer);           
+        }
+
+
+        public ICommand UpdateCustomerCommand
+        {
+            get
+            {
+                return new RelayCommand(u => UpdateCustomer());
+            }
+        }
+
+        private void UpdateCustomer()
+        {
+            
+            _CustomersService.Update(SelectedCustomer, TextValue);
+          
+            
+        }
+
+        public ICommand DeleteCustomerCommand
+        {
+            get
+            {
+                return new RelayCommand(u => DeleteCustomer());
+            }
+        }
+
+        private void DeleteCustomer()
+        {
+
+            _CustomersService.Remove(SelectedCustomer.Id);
+            this.Customers.Remove(SelectedCustomer);
+
         }
 
         private ICollection<CustomerModel> _Customers;
@@ -93,6 +132,8 @@ namespace TEST02_WPFMVVM.viewmodel
                 OnPropertyChanged();
             }
         }
+
+
 
         private CustomerModel _Customer;
 
@@ -178,7 +219,38 @@ namespace TEST02_WPFMVVM.viewmodel
             this.ButtonEnabled = true;
         }
 
+        private ICommand _SelectRowCommand;
 
+        public ICommand SelectRowCommand
+        {
+            get
+            {
+                if (_SelectRowCommand == null)
+                {
+                    _SelectRowCommand = new RelayCommand(p => SelectRow(), p => CanSelectRow());
+                }
+
+                return _SelectRowCommand;
+            }
+        }
+
+        private void SelectRow()
+        {
+            this.TextValue = SelectedCustomer.Name;
+        }
+
+
+        private bool CanSelectRow()
+        {
+            if (SelectedCustomer != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 

@@ -53,9 +53,11 @@ namespace TEST02_WPFMVVM.services
             customers.Remove(customer);
         }
 
-        public void Update(CustomerModel customer)
+        public void Update(CustomerModel customer, string name)
         {
-            throw new NotImplementedException();
+            customers.Where(c => c.Id == customer.Id).ToList().ForEach(x => x.Name = name);
+            
+            
         }
     }
 }
